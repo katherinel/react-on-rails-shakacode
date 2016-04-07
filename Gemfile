@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
 
 gem 'react_on_rails'
 gem 'haml'
@@ -49,3 +49,20 @@ group :development do
   gem 'spring'
 end
 
+
+gem 'therubyracer', platforms: :ruby
+
+# require: false is necessary for the linters as we only want them loaded
+# when used by the linting rake tasks.
+group :development do
+  gem("rubocop", require: false)
+  gem("ruby-lint", require: false)
+  gem("scss_lint", require: false)
+end
+
+# For Heroku deployment
+gem 'rails_12factor', group: :production
+gem 'puma', group: :production
+
+
+gem 'bootstrap-sass'
